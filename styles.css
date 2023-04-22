@@ -13,24 +13,76 @@
     padding: 92px 0px
 }
 
+body {
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7f7 100%);
+    height: 100vh;
+}
+
 /* NAV */
+
+nav {
+    margin: 24px;
+}
+
+nav .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .nav_links {
     margin: 24px 0px;
-    display: flex;
-    justify-content: end;
 }
 
 .nav_link {
     margin-right: 12px;
+    padding-bottom: 3px;
     text-decoration: none;
     color: #242424;
+    font-size: 20px;
+    transition: all 300ms ease;
+}
+
+.link_hover {
+    position: relative;
+}
+
+.link_hover::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    height: 3px;
+    width: 0;
+    right: 0;
+    background-color: #242424;
+    transition: all 300ms ease;
+}
+
+.link_hover:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.logo {
+    height: 128px;
 }
 
 header .row {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.title {
+    font-size: 36px;
+    margin-bottom: 24px;
+    font-weight: bold;
+}
+
+.intro_para {
+    font-size: 20px;
+    text-align: center;
 }
 
 #landing .row {
@@ -78,10 +130,51 @@ button {
     display: block;
     width: 100%;
     padding: 10px;
+    margin-top: 12px;
     font-size: 18px;
+    transition: all 150ms ease;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: lightgray;
+    background-color: darkgrey;
     color: #242424;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results p {
+    font-size: 16px;
+    padding: 8px;
+}
+
+.value {
+    color: gold;
+}
+
+.good {
+    color: green;
+}
+
+.better {
+    color: blue;
+}
+
+.best {
+    color: red;
+}
+
+.npr {
+    color: purple;
+}
+
+.highlight {
+    background-color: yellow;
+    color: #242424;
+    border-radius: 8px;
+    padding: 8px;
 }

@@ -76,6 +76,8 @@ const submitBtn = document.getElementById("submit");
 let currentQuiz = 0;
 let score = 0;
 
+renderQuiz();
+
 function renderQuiz() {
     deselectAnswers();
     const currentQuizData = quizData[currentQuiz];
@@ -91,11 +93,58 @@ function deselectAnswers() {
 }
 
 function getSelected() {
-    let answerEls;
-    answerEls.forEach((answerEl) => {
+    let answer;
+    answerEls.forEach(answerEl => {
         if (answerEl.checked) {
-            answer = answerEl.id;
+            answer = Number(answerEl.id);
         }
     });
     return answer;
+}
+
+submitBtn.addEventListener("click", () => {
+    const answer = getSelected();
+    if (answer || answer === 0) {
+        score += answer;
+        console.log(score);
+        currentQuiz++;
+
+        if(currentQuiz < quizData.length) {
+            renderQuiz();
+        } else {
+            quiz.innerHTML = `
+            <div class="quiz_header">
+            <h2 id="question">You score is: ${score}</h2>
+            <div class="results">
+                            <h3 class="value">VALUE: 0 - 35</h3>
+                            <p>Selling soon, rentals & barely used areas</p>
+                            <h3 class="good">GOOD: 35 - 55</h3>
+                            <p>Light traffic to medium traffic</p>
+                            <h3 class="better">BETTER: 60 - 70</h3>
+                            <p>Medium traffic & better feel</p>
+                            <h3 class="best">BEST: 75 - 80</h3>
+                            <p>High traffic & less upkeep</p>
+                            <h3 class="npr">NO PET REGRET: 85+</h3>
+                            <p>Superior cleanability & waterproof backing</p>
+                        </div>
+            <button onclick="location.reload()">Reload</button>
+            </div>
+            `;
+            results();
+        }
+    }
+});
+
+function results() {
+    if (score < 35) {
+        document.querySelector(".value").classList += " highlight";
+    } else if (score > 35 && score < 56) {
+        document.querySelector(".good").classList += " highlight";
+    } else if (score > 59 && score < 71) {
+        document.querySelector(".better").classList += " highlight";
+    } else if (score > 74 && score < 81) {
+        document.querySelector(".best").classList += " highlight";
+    } else if (score > 84) {
+        document.querySelector(".npr").classList += " highlight";
+    }
 }
