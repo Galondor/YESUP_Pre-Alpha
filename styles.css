@@ -216,9 +216,39 @@ button:hover {
     }
 
     .quiz_header {
-        padding: 12px 32px 12px 32px;
+        padding: 36px
     }
 
+    .results {
+        text-align: center;
+    }
+}
+
+@media (max-width: 375px) {
+    body {
+        height: 150vh;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 320px) {
+    body {
+        height: 160vh;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    #question {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
     .results {
         text-align: center;
     }

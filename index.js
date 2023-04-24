@@ -114,7 +114,7 @@ submitBtn.addEventListener("click", () => {
         } else {
             quiz.innerHTML = `
             <div class="quiz_header">
-            <h2 id="question">You score is: ${score}</h2>
+            <h2 id="question">Please tell your sales rep that your score is: ${score}</h2>
             <div class="results">
                             <h3 class="value">VALUE: 0 - 35</h3>
                             <p>Selling soon, rentals & barely used areas</p>
