@@ -61,7 +61,14 @@ const quizData = [
         five: "1 to 5",
         ten: "6 to 10",
         fifteen: "11 or more",
-    }
+    },
+    {
+        question: "If you were to sell your home, how much would you expect to get?",
+        zero: ">$50,000",
+        five: "$50,000 - $100,000",
+        ten: "$100,000 - $200,000",
+        fifteen: "$250,000 or more",
+    },
 ];
 
 const quiz = document.getElementById("quiz");
@@ -72,6 +79,7 @@ const fiveText = document.getElementById("5_text");
 const tenText = document.getElementById("10_text");
 const fifteenText = document.getElementById("15_text");
 const submitBtn = document.getElementById("submit");
+const loader = document.querySelector(".loader");
 
 let currentQuiz = 0;
 let score = 0;
@@ -110,7 +118,13 @@ submitBtn.addEventListener("click", () => {
         currentQuiz++;
 
         if(currentQuiz < quizData.length) {
-            renderQuiz();
+            setTimeout(() => {
+                renderQuiz();
+                loader.style.display = "none";
+            }, 500);
+            questionEl.innerText = "Loading...";
+            loader.style.display = "flex";
+            
         } else {
             quiz.innerHTML = `
             <div class="quiz_header">

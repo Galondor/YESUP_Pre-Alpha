@@ -196,6 +196,37 @@ button:hover {
     padding: 8px;
 }
 
+.loading_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    display: none;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 92px;
+}
+
+footer .row {
+    display: flex;
+    justify-content: end;
+}
+
 @media (max-width: 425px) {
     .nav_links {
         display: none;

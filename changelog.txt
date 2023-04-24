@@ -1,0 +1,6 @@
+Version: 0.0.1
++ Version Number
++ Skeleton Footer
++ Question 10
++ changelog
++ Skeleton Loading State (For possible future API hits)
