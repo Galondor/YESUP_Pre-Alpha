@@ -122,11 +122,12 @@ submitBtn.addEventListener("click", () => {
                 renderQuiz();
                 loader.style.display = "none";
             }, 500);
-            questionEl.innerText = "Loading...";
+            questionEl.innerText = "Loading Next Question...";
             loader.style.display = "flex";
             
         } else {
-            quiz.innerHTML = `
+            setTimeout(() => {
+                quiz.innerHTML = `
             <div class="quiz_header">
             <h2 id="question">Please tell your sales rep that your score is: ${score}</h2>
             <div class="results">
@@ -145,6 +146,10 @@ submitBtn.addEventListener("click", () => {
             </div>
             `;
             results();
+                loader.style.display = "none";
+            }, 500);
+            questionEl.innerText = "Loading Results...";
+            loader.style.display = "flex";
         }
     }
 });

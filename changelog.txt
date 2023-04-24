@@ -4,3 +4,6 @@ Version: 0.0.1
 + Question 10
 + changelog
 + Skeleton Loading State (For possible future API hits)
+Version: 0.0.2
++ Changed loading text for questions & results
++ Loading results
