@@ -68,6 +68,11 @@ nav .row {
 
 .logo {
     height: 128px;
+    transition: all 300ms ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
 }
 
 header .row {
