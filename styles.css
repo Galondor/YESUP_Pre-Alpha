@@ -227,6 +227,10 @@ footer .row {
     justify-content: end;
 }
 
+.version {
+    margin-right: 16px;
+}
+
 @media (max-width: 425px) {
     .nav_links {
         display: none;
