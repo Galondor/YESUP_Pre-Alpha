@@ -129,18 +129,18 @@ submitBtn.addEventListener("click", () => {
             setTimeout(() => {
                 quiz.innerHTML = `
             <div class="quiz_header">
-            <h2 id="question">Please tell your sales rep that your score is: ${score}</h2>
+            <h2 id="question">Your YESUP score is: ${score}</h2>
             <div class="results">
                             <h3 class="value">VALUE: 0 - 35</h3>
                             <p>Selling soon, rentals & barely used areas</p>
                             <h3 class="good">GOOD: 35 - 55</h3>
-                            <p>Light traffic to medium traffic</p>
+                            <p>Light to medium traffic, 12mil wear layer</p>
                             <h3 class="better">BETTER: 60 - 70</h3>
-                            <p>Medium traffic & better feel</p>
+                            <p>Medium traffic, better feel 20mil wear layer</p>
                             <h3 class="best">BEST: 75 - 80</h3>
                             <p>High traffic & less upkeep</p>
                             <h3 class="npr">NO PET REGRET: 85+</h3>
-                            <p>Superior cleanability & waterproof backing</p>
+                            <p>Superior cleanability, waterproof backing, highly scratch resistant</p>
                         </div>
             <button onclick="location.reload()">Reload</button>
             </div>
@@ -167,3 +167,5 @@ function results() {
         document.querySelector(".npr").classList += " highlight";
     }
 }
+
+

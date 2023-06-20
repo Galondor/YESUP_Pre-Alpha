@@ -224,11 +224,14 @@ button:hover {
 
 footer {
     margin-top: 92px;
+    padding: 4px;
 }
 
 footer .row {
     display: flex;
     justify-content: center;
+    margin-bottom: 12px;
+    text-align: center;
 }
 
 .version {

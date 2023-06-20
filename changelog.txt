@@ -8,3 +8,6 @@ Version: 0.0.2
 + Changed loading text for questions & results
 + Loading results
 + Fixed Version Number
+Version: 0.0.3
++ Changed file names
++ Style Fixes
