@@ -64,11 +64,11 @@ const quizData = [
     },
     {
         question: "If you were to sell your home, how much would you expect to get?",
-        zero: ">$50,000",
-        five: "$50,000 - $100,000",
-        ten: "$100,000 - $200,000",
+        zero: "Rental",
+        five: "$0 - $100,000",
+        ten: "$100,000 - $225,000",
         fifteen: "$250,000 or more",
-    },
+    }
 ];
 
 
@@ -196,9 +196,11 @@ function results() {
     writeUserData(firstName, lastName, score, time, date, email);
 }
 
-let database = firebase.database();
+import firebase from "firebase/app";
+import "https://yesup-cadef-default-rtdb.firebaseio.com"
 
 function writeUserData(firstName, lastName, score, time, date, email) {
+    let database = firebase.database();
     firebase.database().ref('users/' + userId).set({
         firstName: firstName,
         lastName: lastName,
