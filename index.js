@@ -71,6 +71,7 @@ const quizData = [
     },
 ];
 
+
 const quiz = document.getElementById("quiz");
 const answerEls = document.querySelectorAll(".answer");
 const questionEl = document.getElementById("question");
@@ -81,10 +82,29 @@ const fifteenText = document.getElementById("15_text");
 const submitBtn = document.getElementById("submit");
 const loader = document.querySelector(".loader");
 
+const cover = document.querySelector(".cover");
+const firstName = document.getElementById("first_name");
+const lastName = document.getElementById("last_name");
+const email = document.getElementById("email");
+const submitName = document.getElementById("submit_name");
+
+
 let currentQuiz = 0;
 let score = 0;
 
-renderQuiz();
+submitName.addEventListener("click", () => {
+    if (firstName.value && lastName.value && email.value) {
+        submitName.textContent = "Thank you!";
+        localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
+        setTimeout(() => {
+            cover.style.display = "none";
+            renderQuiz();
+        }, 1000);
+    } else {
+        alert("Please fill in all fields");
+    }
+});
+
 
 function renderQuiz() {
     deselectAnswers();
@@ -129,7 +149,7 @@ submitBtn.addEventListener("click", () => {
             setTimeout(() => {
                 quiz.innerHTML = `
             <div class="quiz_header">
-            <h2 id="question">Your YESUP score is: ${score}</h2>
+            <h2 id="question">Your YESUP score is: <span class="score_color">${score}</span></h2>
             <div class="results">
                             <h3 class="value">VALUE: 0 - 35</h3>
                             <p>Selling soon, rentals & barely used areas</p>
@@ -155,6 +175,13 @@ submitBtn.addEventListener("click", () => {
 });
 
 function results() {
+    const time = now.getTime();
+    const date = now.toLocaleDateString();
+    const firstName = JSON.parse(localStorage.getItem("User")).firstName;
+    const lastName = JSON.parse(localStorage.getItem("User")).lastName;
+    const email = JSON.parse(localStorage.getItem("User")).email;
+    const userId = email.replace("@", "").replace(".", "");
+
     if (score < 35) {
         document.querySelector(".value").classList += " highlight";
     } else if (score > 35 && score < 56) {
@@ -166,6 +193,20 @@ function results() {
     } else if (score > 84) {
         document.querySelector(".npr").classList += " highlight";
     }
+    writeUserData(firstName, lastName, score, time, date, email);
+}
+
+let database = firebase.database();
+
+function writeUserData(firstName, lastName, score, time, date, email) {
+    firebase.database().ref('users/' + userId).set({
+        firstName: firstName,
+        lastName: lastName,
+        score: score,
+        time: time,
+        date: date,
+        email, email
+    });
 }
 
 

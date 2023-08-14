@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YESUP</title>
-    <link rel="icon" href="assets/SFS Logo.png">
+    <link rel="icon" href="assets/SFN FIT NO TAG.png">
     <link rel="stylesheet" href="styles.css">
     <script src="index.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 <body>
     <nav>
         <div class="row">
-            <figure><a href="https://simpleflooringsolutionsjackson.com/" target="_blank"><img src="assets/SFS Logo Normal.png" class="logo" alt="Logo"></a></figure>
+            <figure><a href="https://simpleflooringsolutionsjackson.com/" target="_blank"><img src="assets/SFN FIT.png" class="logo" alt="Logo"></a></figure>
         </div>
     </nav>
     <header>
@@ -27,6 +27,25 @@
     <section id="landing">
         <div class="container">
             <div class="row">
+                <div class="cover">
+                    <div class="personal_info">
+                        <div class="name_container">
+                            <div class="first_name">
+                                <label for="first_name">First Name</label>
+                                <input type="text" name="firstName" id="first_name">
+                            </div>
+                            <div class="last_name">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" name="lastName" id="last_name">
+                            </div>
+                            <div class="email">
+                                <label for="email">Email Address</label>
+                                <input type="email" name="email" id="email">
+                            </div>
+                        </div>
+                        <button id="submit_name">Submit</button>
+                    </div>
+                </div>
                 <div class="quiz_container" id="quiz">
                     <div class="quiz_header">
                         <div class="loading_container">
@@ -57,6 +76,30 @@
             </div>
         </div>
     </section>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAhG9xxAGOgwJqNJ74KNH8-SQa1-Vms4x8",
+          authDomain: "yesup-cadef.firebaseapp.com",
+          databaseURL: "https://yesup-cadef-default-rtdb.firebaseio.com",
+          projectId: "yesup-cadef",
+          storageBucket: "yesup-cadef.appspot.com",
+          messagingSenderId: "165195293447",
+          appId: "1:165195293447:web:267658e9134cff8afc9ba2",
+          measurementId: "G-WMH0DESMEM"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
 </body>
 <footer>
     <div class="row">
