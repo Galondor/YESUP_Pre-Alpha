@@ -8,6 +8,13 @@
     <link rel="icon" href="assets/SFN FIT NO TAG.png">
     <link rel="stylesheet" href="styles.css">
     <script src="index.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("mxiOsOT-KtW8Bfn9U");
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,200;0,400;0,700;1,900&family=Sigmar&display=swap" rel="stylesheet">
@@ -15,7 +22,7 @@
 <body>
     <nav>
         <div class="row">
-            <figure><a href="https://simpleflooringsolutionsjackson.com/" target="_blank"><img src="assets/SFN FIT.png" class="logo" alt="Logo"></a></figure>
+            <figure><a href="https://simpleflooringnetwork.com/" target="_blank"><img src="assets/SFN FIT.png" class="logo" alt="Logo"></a></figure>
         </div>
     </nav>
     <header>
@@ -74,32 +81,22 @@
                     <button id="submit">Submit</button>
                 </div>
             </div>
+            <form id="email_form">
+                <div class="user_info" style="display: none;">
+                    <input id="name" type="text" name="user_name">
+                    <input id="email" type="email" name="user_email">
+                    <textarea name="message" id="message"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="dev_container">
+            <span>Promo Codes</span>
+            <div class="code_box">
+                <input type="text" class="dev_code_box" id="dev_code_box">
+                <button class="dev_skip_btn" id="dev_skip_btn">Submit</button>
+            </div>
         </div>
     </section>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyAhG9xxAGOgwJqNJ74KNH8-SQa1-Vms4x8",
-          authDomain: "yesup-cadef.firebaseapp.com",
-          databaseURL: "https://yesup-cadef-default-rtdb.firebaseio.com",
-          projectId: "yesup-cadef",
-          storageBucket: "yesup-cadef.appspot.com",
-          messagingSenderId: "165195293447",
-          appId: "1:165195293447:web:267658e9134cff8afc9ba2",
-          measurementId: "G-WMH0DESMEM"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
 </body>
 <footer>
     <div class="row">

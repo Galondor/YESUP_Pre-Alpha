@@ -175,14 +175,18 @@ submitBtn.addEventListener("click", () => {
 });
 
 function results() {
-    const time = now.getTime();
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const time = hours + ":" + minutes + ":" + seconds;
     const date = now.toLocaleDateString();
     const firstName = JSON.parse(localStorage.getItem("User")).firstName;
     const lastName = JSON.parse(localStorage.getItem("User")).lastName;
     const email = JSON.parse(localStorage.getItem("User")).email;
     const userId = email.replace("@", "").replace(".", "");
 
-    if (score < 35) {
+    if (score <= 35) {
         document.querySelector(".value").classList += " highlight";
     } else if (score > 35 && score < 56) {
         document.querySelector(".good").classList += " highlight";
@@ -193,22 +197,85 @@ function results() {
     } else if (score > 84) {
         document.querySelector(".npr").classList += " highlight";
     }
-    writeUserData(firstName, lastName, score, time, date, email);
+    console.log(firstName + " " + lastName, score, time, date, email);
+    //writeUserData(firstName, lastName, score, time, date, email);
+    sendEmail(firstName, lastName, score, time, date, email);
 }
 
-import firebase from "firebase/app";
-import "https://yesup-cadef-default-rtdb.firebaseio.com"
+// Dev Quiz Skip
+const devSkip = document.getElementById("dev_skip_btn");
+const codeBox = document.getElementById("dev_code_box");
+const devContainer = document.querySelector(".dev_container");
 
-function writeUserData(firstName, lastName, score, time, date, email) {
-    let database = firebase.database();
-    firebase.database().ref('users/' + userId).set({
-        firstName: firstName,
-        lastName: lastName,
-        score: score,
-        time: time,
-        date: date,
-        email, email
-    });
+devSkip.addEventListener("click", () => {
+    if (codeBox.value === "4881") {
+        devContainer.style.display = "none";
+        cover.style.display = "none";
+        firstName.value = "John";
+        lastName.value = "Dev";
+        email.value = "fakeemail@devops.com";
+        score = 85;
+        localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
+        cover.style.display = "none";
+        currentQuiz = 10;
+        renderQuiz();
+    };
+
+    if (codeBox.value === "4882") {
+        devContainer.style.display = "none";
+        cover.style.display = "none";
+        firstName.value = "John";
+        lastName.value = "Dev";
+        email.value = "fakeemail@devops.com";
+        score = 35;
+        localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
+        cover.style.display = "none";
+        currentQuiz = 10;
+        renderQuiz();
+    };
+});
+
+function sendEmail(firstName, lastName, score, time, date, email) {
+    const mailForm = document.getElementById("email_form");
+    const name = document.getElementById("name");
+    const emailEl = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    name.value = firstName + " " + lastName;
+    emailEl.value = email;
+    message.value = `
+    Name: ${firstName} ${lastName}
+    Score: ${score}
+    Time: ${time}
+    Date: ${date}
+    Email: ${email}`;
+
+
+    emailjs.sendForm("service_da6rcsl", "template_vqogh2h", mailForm, "mxiOsOT-KtW8Bfn9U").then(() => {
+        console.log("Email Sent");
+    }).catch(() => {})
 }
+
+
+
+
+
+
+
+
+
+
+
+// function writeUserData(firstName, lastName, score, time, date, email) {
+//     let database = firebase.database();
+//     firebase.database().ref('users/' + userId).set({
+//         firstName: firstName,
+//         lastName: lastName,
+//         score: score,
+//         time: time,
+//         date: date,
+//         email, email
+//     });
+// }
 
 

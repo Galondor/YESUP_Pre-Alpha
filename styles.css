@@ -284,6 +284,42 @@ input:focus {
     text-align: center;
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* DEV */
+
+.dev_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dev_skip_btn {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.dev_code_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.code_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
 /* FOOTER */
 
 footer {
