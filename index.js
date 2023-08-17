@@ -87,17 +87,26 @@ const firstName = document.getElementById("first_name");
 const lastName = document.getElementById("last_name");
 const email = document.getElementById("email");
 const submitName = document.getElementById("submit_name");
+const quizHeader = document.querySelector(".quiz_header");
+
+//const emailJsApiKey = process.env.EMAILJS_API_KEY;
+//const templateKey = process.env.YESUP_TEMPLATE_KEY;
+//const serviceKey = process.env.EMAILJS_SERVICE_KEY;
+const sendGridApiKey = process.env.SENDGRID_API_KEY;
+
+
 
 
 let currentQuiz = 0;
 let score = 0;
-
+quizHeader.style.opacity = "0";
 submitName.addEventListener("click", () => {
     if (firstName.value && lastName.value && email.value) {
         submitName.textContent = "Thank you!";
         localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
         setTimeout(() => {
-            cover.style.display = "none";
+            cover.style.transform = "translateX(-200%)";
+            quizHeader.style.opacity = "1";
             renderQuiz();
         }, 1000);
     } else {
@@ -206,6 +215,7 @@ function results() {
 const devSkip = document.getElementById("dev_skip_btn");
 const codeBox = document.getElementById("dev_code_box");
 const devContainer = document.querySelector(".dev_container");
+const codeBoxContainer = document.querySelector(".code_box");
 
 devSkip.addEventListener("click", () => {
     if (codeBox.value === "4881") {
@@ -216,8 +226,8 @@ devSkip.addEventListener("click", () => {
         email.value = "fakeemail@devops.com";
         score = 85;
         localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
-        cover.style.display = "none";
         currentQuiz = 10;
+        quizHeader.style.opacity = "1";
         renderQuiz();
     };
 
@@ -229,10 +239,34 @@ devSkip.addEventListener("click", () => {
         email.value = "fakeemail@devops.com";
         score = 35;
         localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
-        cover.style.display = "none";
         currentQuiz = 10;
+        quizHeader.style.opacity = "1";
         renderQuiz();
     };
+
+    if (codeBox.value === "4883") {
+        devContainer.style.display = "none";
+        cover.style.display = "none";
+        firstName.value = "John";
+        lastName.value = "Dev";
+        email.value = "fakeemail@devops.com";
+        localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
+        quizHeader.style.opacity = "1";
+        renderQuiz();
+    } else {
+        codeBoxContainer.classList += " shake";
+        codeBox.value = "Invalid Code";
+        codeBox.style.color = "red";
+        codeBox.style.borderColor = "red";
+        alert("For Development Use Only. Please continue with the quiz as normal.");
+    }
+
+    setTimeout(() => {
+        codeBoxContainer.classList.remove("shake");
+        codeBox.value = "";
+        codeBox.style.color = "black";
+        codeBox.style.borderColor = "black";
+    }, 1000);
 });
 
 function sendEmail(firstName, lastName, score, time, date, email) {
@@ -251,10 +285,13 @@ function sendEmail(firstName, lastName, score, time, date, email) {
     Email: ${email}`;
 
 
-    emailjs.sendForm("service_da6rcsl", "template_vqogh2h", mailForm, "mxiOsOT-KtW8Bfn9U").then(() => {
+    emailjs.sendForm(serviceKey, templateKey, mailForm, emailJsApiKey).then(() => {
         console.log("Email Sent");
     }).catch(() => {})
 }
+
+
+
 
 
 
