@@ -92,7 +92,7 @@ const quizHeader = document.querySelector(".quiz_header");
 //const emailJsApiKey = process.env.EMAILJS_API_KEY;
 //const templateKey = process.env.YESUP_TEMPLATE_KEY;
 //const serviceKey = process.env.EMAILJS_SERVICE_KEY;
-const sendGridApiKey = process.env.SENDGRID_API_KEY;
+//const sendGridApiKey = process.env.SENDGRID_API_KEY;
 
 
 
