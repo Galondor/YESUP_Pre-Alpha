@@ -420,3 +420,19 @@ footer .row {
         text-align: center;
     }
 }
+
+@media (max-width: 1024px) {
+    .cover {
+        width: 80%;
+        padding: 48px;
+        height: 60%;
+    }
+}
+
+@media (max-width: 1440px) {
+    .cover {
+        width: 80%;
+        padding: 48px;
+        height: 60%;
+    }
+}
