@@ -101,17 +101,12 @@ let currentQuiz = 0;
 let score = 0;
 quizHeader.style.opacity = "0";
 submitName.addEventListener("click", () => {
-    if (firstName.value && lastName.value && email.value) {
-        submitName.textContent = "Thank you!";
-        localStorage.setItem("User", JSON.stringify({firstName: firstName.value, lastName: lastName.value, email: email.value}));
+        submitName.textContent = "Starting Quiz...";
         setTimeout(() => {
             cover.style.transform = "translateX(-200%)";
             quizHeader.style.opacity = "1";
             renderQuiz();
         }, 1000);
-    } else {
-        alert("Please fill in all fields");
-    }
 });
 
 
@@ -192,8 +187,6 @@ function results() {
     const date = now.toLocaleDateString();
     const firstName = JSON.parse(localStorage.getItem("User")).firstName;
     const lastName = JSON.parse(localStorage.getItem("User")).lastName;
-    const email = JSON.parse(localStorage.getItem("User")).email;
-    const userId = email.replace("@", "").replace(".", "");
 
     if (score <= 35) {
         document.querySelector(".value").classList += " highlight";
@@ -206,9 +199,6 @@ function results() {
     } else if (score > 84) {
         document.querySelector(".npr").classList += " highlight";
     }
-    console.log(firstName + " " + lastName, score, time, date, email);
-    //writeUserData(firstName, lastName, score, time, date, email);
-    sendEmail(firstName, lastName, score, time, date, email);
 }
 
 // Dev Quiz Skip
@@ -268,51 +258,4 @@ devSkip.addEventListener("click", () => {
         codeBox.style.borderColor = "black";
     }, 1000);
 });
-
-function sendEmail(firstName, lastName, score, time, date, email) {
-    const mailForm = document.getElementById("email_form");
-    const name = document.getElementById("name");
-    const emailEl = document.getElementById("email");
-    const message = document.getElementById("message");
-
-    name.value = firstName + " " + lastName;
-    emailEl.value = email;
-    message.value = `
-    Name: ${firstName} ${lastName}
-    Score: ${score}
-    Time: ${time}
-    Date: ${date}
-    Email: ${email}`;
-
-
-    emailjs.sendForm(serviceKey, templateKey, mailForm, emailJsApiKey).then(() => {
-        console.log("Email Sent");
-    }).catch(() => {})
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function writeUserData(firstName, lastName, score, time, date, email) {
-//     let database = firebase.database();
-//     firebase.database().ref('users/' + userId).set({
-//         firstName: firstName,
-//         lastName: lastName,
-//         score: score,
-//         time: time,
-//         date: date,
-//         email, email
-//     });
-// }
-
 
