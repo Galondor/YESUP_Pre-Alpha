@@ -419,6 +419,12 @@ footer .row {
     .results {
         text-align: center;
     }
+    
+    .cover {
+        width: 80%;
+        padding: 48px;
+        height: 60%;
+    }
 }
 
 @media (max-width: 1024px) {
