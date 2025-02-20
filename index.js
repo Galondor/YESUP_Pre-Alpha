@@ -56,6 +56,27 @@ const quizData = [
         fifteen: "11 or more",
     },
     {
+        question: "How often do you have spill or stain accidents?",
+        zero: "Never",
+        five: "Seldom",
+        ten: "Occasionally",
+        fifteen: "Often",
+    },
+    {
+        question: "Are your accidents more likely pet or people related?",
+        zero: "No Accidents",
+        five: "People",
+        ten: "Pet",
+        fifteen: "Both",
+    },
+    {
+        question: "How important is comfort to you?",
+        zero: "Not Important",  
+        five: "Somewhat Important",
+        ten: "Important",
+        fifteen: "Very Important",
+    },
+    {
         question: "How many years do you expect your flooring to last?",
         zero: "0",
         five: "1 to 5",
@@ -68,6 +89,20 @@ const quizData = [
         five: "$0 - $100,000",
         ten: "$100,000 - $225,000",
         fifteen: "$250,000 or more",
+    },
+    {
+        question: "How old is your house?",
+        zero: "0 to 25 years",
+        five: "26 to 45 years",
+        ten: "46 to 70 years",
+        fifteen: "71+",   
+    },
+    {
+        question: "How would you describe your floors?",
+        zero: "Flat",
+        five: "Somewhat Flat",
+        ten: "Dipped",
+        fifteen: "Humped",        
     }
 ];
 
