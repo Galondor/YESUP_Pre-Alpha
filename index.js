@@ -84,11 +84,11 @@ const quizData = [
         fifteen: "11 or more",
     },
     {
-        question: "If you were to sell your home, how much would you expect to get?",
+        question: "If you were to sell your home today, what would you expect to receive?",
         zero: "Rental",
-        five: "$0 - $100,000",
-        ten: "$100,000 - $225,000",
-        fifteen: "$250,000 or more",
+        five: "$60,000 - $150,000",
+        ten: "$150,000 - $300,000",
+        fifteen: "$300,000 or more",
     },
     {
         question: "How old is your house?",
